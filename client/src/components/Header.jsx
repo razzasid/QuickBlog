@@ -2,7 +2,7 @@ import { assets } from "../assets/assets";
 
 const Header = () => {
   return (
-    <div className="flex flex-col items-center text-center gap-10 p-15 justify-center">
+    <div className="flex flex-col items-center text-center gap-7 mt-10 justify-center">
       <img
         src={assets.gradientBackground}
         alt=""
