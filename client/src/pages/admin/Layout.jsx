@@ -9,16 +9,16 @@ const Layout = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-between py-2 h-[70px] px-4 sm:px-12 border-b border-gray-200">
+      <div className="flex h-[70px] items-center justify-between border-b border-gray-200 px-4 py-2 sm:px-12">
         <img
           src={assets.logo}
           alt=""
-          className="w-32 sm:w-40 cursor-pointer"
+          className="w-32 cursor-pointer sm:w-40"
           onClick={() => navigate("/")}
         />
         <button
           onClick={logout}
-          className="text-sm px-8 py-2 bg-primary text-white rounded-full cursor-pointer"
+          className="bg-primary cursor-pointer rounded-full px-8 py-2 text-sm text-white"
         >
           Logout
         </button>

@@ -2,26 +2,26 @@ import { assets } from "../assets/assets";
 
 const Header = () => {
   return (
-    <div className="flex flex-col items-center text-center gap-7 mt-10 justify-center">
+    <div className="mt-10 flex flex-col items-center justify-center gap-7 text-center">
       <img
         src={assets.gradientBackground}
         alt=""
         className="absolute -z-1 opacity-50"
       />
-      <div className="inline-flex gap-4 items-center justify-center px-6 py-1.5 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary">
+      <div className="border-primary/40 bg-primary/10 text-primary inline-flex items-center justify-center gap-4 rounded-full border px-6 py-1.5 text-sm">
         <p>New: AI feature integrated</p>
         <img className="w-2.5" src={assets.star_icon} alt="start icon" />
       </div>
-      <h1 className="text-3xl sm:text-6xl  font-semibold sm:leading-16 text-gray-700">
+      <h1 className="text-3xl font-semibold text-gray-700 sm:text-6xl sm:leading-16">
         Your own <span className="text-primary">blogging</span> <br />
         platform.
       </h1>
-      <p className=" max-w-2xl m-auto max-sm:text-xs text-gray-500">
+      <p className="m-auto max-w-2xl text-gray-500 max-sm:text-xs">
         This is your space to think out loud, to share what matters, and to
         write without filters. Whether it’s one word or a thousand, your story
         starts right here.
       </p>
-      <form className="flex justify-between w-full max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden">
+      <form className="mx-auto flex w-full max-w-lg justify-between overflow-hidden rounded border border-gray-300 bg-white max-sm:scale-75">
         <input
           placeholder="Search for blogs"
           required
@@ -30,7 +30,7 @@ const Header = () => {
         />
         <button
           type="submit"
-          className="bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all cursor-pointer"
+          className="bg-primary m-1.5 cursor-pointer rounded px-8 py-2 text-white transition-all hover:scale-105"
         >
           Search
         </button>

@@ -1,18 +1,23 @@
 function NewsLetter() {
   return (
-    <div className="flex flex-col items-center justify-center text-center space-y-2 my-32">
-      <h1 className="md:text-4xl text-2xl font-semibold">Never Miss a Blog!</h1>
-      <p className="md:text-lg text-gray-500/70 pb-8">
+    <div className="my-32 flex flex-col items-center justify-center space-y-2 text-center">
+      <h1 className="text-2xl font-semibold md:text-4xl">Never Miss a Blog!</h1>
+      <p className="pb-8 text-gray-500/70 md:text-lg">
         Subscribe to get the latest blog, new tech, and exclusive news.
       </p>
-      <form className="flex items-center justify-between max-w-2xl w-full md:h-13 h-12">
+      <form className="flex h-12 w-full max-w-2xl items-center justify-between md:h-13">
         <input
           type="text"
-          className="border border-gray-300 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-gray-500"
+          className="h-full w-full rounded-md rounded-r-none border border-r-0 border-gray-300 px-3 text-gray-500 outline-none"
           placeholder="Enter your email id "
           required
         />
-        <button type="submit" className="md:px-12 px-8 h-full text-white bg-primary/80 hover:bg-primary transition-all cursor-pointer rounded-md rounded-l-none">Subscribe</button>
+        <button
+          type="submit"
+          className="bg-primary/80 hover:bg-primary h-full cursor-pointer rounded-md rounded-l-none px-8 text-white transition-all md:px-12"
+        >
+          Subscribe
+        </button>
       </form>
     </div>
   );

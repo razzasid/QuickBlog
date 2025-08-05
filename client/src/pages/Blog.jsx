@@ -43,38 +43,38 @@ const Blog = () => {
 
       <Navbar />
 
-      <div className="text-center mt-20 text-gray-600">
+      <div className="mt-20 text-center text-gray-600">
         <p className="text-primary py-4 font-medium">
           Published on {Moment(data.createdAt).format("MMMM Do YYYY")}
         </p>
-        <h1 className="text-2xl sm:text-5xl font-semibold max-w-2xl mx-auto text-gray-800">
+        <h1 className="mx-auto max-w-2xl text-2xl font-semibold text-gray-800 sm:text-5xl">
           {data.title}
         </h1>
-        <h2 className="my-5 max-w-lg truncate mx-auto">{data.subTitle}</h2>
-        <p className="inline-block py-1 px-4 rounded-full mb-6 border text-sm border-primary/35 bg-primary/5 font-medium text-primary">
+        <h2 className="mx-auto my-5 max-w-lg truncate">{data.subTitle}</h2>
+        <p className="border-primary/35 bg-primary/5 text-primary mb-6 inline-block rounded-full border px-4 py-1 text-sm font-medium">
           Michael Brown
         </p>
       </div>
 
-      <div className="mx-5 max-w-5xl md:mx-auto my-10 mt-6">
-        <img src={data.image} alt="" className="rounded-3xl mx-auto" />
+      <div className="mx-5 my-10 mt-6 max-w-5xl md:mx-auto">
+        <img src={data.image} alt="" className="mx-auto rounded-3xl" />
 
         <div
-          className="rich-text max-w-3xl mx-auto"
+          className="rich-text mx-auto max-w-3xl"
           dangerouslySetInnerHTML={{ __html: data.description }}
         ></div>
 
         {/* comments Section */}
-        <div className="mt-14 mb-10 max-w-3xl mx-auto">
-          <p className="font-semibold mb-4">Comments ({comments.length})</p>
+        <div className="mx-auto mt-14 mb-10 max-w-3xl">
+          <p className="mb-4 font-semibold">Comments ({comments.length})</p>
           <div className="flex flex-col gap-4">
             {comments.map((item, index) => (
-              <div className="relative bg-primary/2 border border-primary/5 max-w-xl p-4 rounded text-gray-600">
-                <div className="flex items-center gap-2 mb-2">
+              <div className="bg-primary/2 border-primary/5 relative max-w-xl rounded border p-4 text-gray-600">
+                <div className="mb-2 flex items-center gap-2">
                   <img src={assets.user_icon} alt="" className="w-6" />
                   <p className="font-medium">{item.name}</p>
                 </div>
-                <p className="text-sm max-w-md ml-8">{item.content}</p>
+                <p className="ml-8 max-w-md text-sm">{item.content}</p>
                 <div className="absolute right-4 bottom-3 flex items-center gap-2 text-xs">
                   {Moment(item.createdAt).fromNow()}
                 </div>
@@ -84,29 +84,29 @@ const Blog = () => {
         </div>
 
         {/* Add Comment Section */}
-        <div className="max-w-3xl mx-auto">
-          <p className="font-semibold mb-4">Add your comment</p>
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-4 font-semibold">Add your comment</p>
           <form
             onSubmit={addComment}
-            className="flex flex-col items-start gap-4 max-w-lg"
+            className="flex max-w-lg flex-col items-start gap-4"
           >
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
               type="text"
               placeholder="name"
-              className="w-full p-2 border border-gray-300 rounded outline-none"
+              className="w-full rounded border border-gray-300 p-2 outline-none"
             />
             <textarea
               onChange={(e) => setContent(e.target.value)}
               value={content}
               placeholder="Comment"
-              className="w-full p-2 border border-gray-300 rounded outline-none h-48"
+              className="h-48 w-full rounded border border-gray-300 p-2 outline-none"
               required
             ></textarea>
             <button
               type="submit"
-              className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor-pointer"
+              className="bg-primary cursor-pointer rounded p-2 px-8 text-white transition-all hover:scale-102"
             >
               Submit
             </button>
@@ -114,8 +114,8 @@ const Blog = () => {
         </div>
 
         {/* Share buttons */}
-        <div className="my-24 max-w-3xl mx-auto">
-          <p className="font-semibold my-4">
+        <div className="mx-auto my-24 max-w-3xl">
+          <p className="my-4 font-semibold">
             Share this article on social media
           </p>
           <div className="flex">
