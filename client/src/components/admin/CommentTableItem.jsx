@@ -1,4 +1,4 @@
-import { tr } from "motion/react-client";
+
 import { assets } from "../../assets/assets";
 
 function CommentTableItem({ comment, fetchComments }) {
