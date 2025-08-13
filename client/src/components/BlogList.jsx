@@ -3,8 +3,19 @@ import { motion } from "motion/react";
 
 import { blog_data, blogCategories } from "../assets/assets";
 import BlogCard from "./BlogCard";
+import { useAppContext } from "../context/AppContext";
 const BlogList = () => {
   const [menu, setMenu] = useState("All");
+  const { blogs, input } = useAppContext();
+
+  const filteredBlogs = () => {
+    if (input === "") {
+      return blogs;
+    }
+    return blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(input.toLowerCase()),
+    );
+  };
   return (
     <>
       <div className="relative my-10 flex justify-center gap-4 sm:gap-8">
@@ -29,7 +40,7 @@ const BlogList = () => {
         ))}
       </div>
       <div className="mx-8 mb-24 grid grid-cols-1 gap-8 sm:mx-16 sm:grid-cols-2 md:grid-cols-3 xl:mx-40 xl:grid-cols-4">
-        {blog_data
+        {filteredBlogs()
           .filter((blog) => (menu === "All" ? true : blog.category === menu))
           .map((blog) => (
             <BlogCard key={blog._id} blog={blog} />

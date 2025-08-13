@@ -1,6 +1,15 @@
+import { useRef } from "react";
 import { assets } from "../assets/assets";
+import { useAppContext } from "../context/AppContext";
 
 const Header = () => {
+  const { input, setInput } = useAppContext();
+  const inputRef = useRef();
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setInput(inputRef.current.value);
+  };
   return (
     <div className="mt-10 flex flex-col items-center justify-center gap-7 text-center">
       <img
@@ -21,8 +30,12 @@ const Header = () => {
         write without filters. Whether it’s one word or a thousand, your story
         starts right here.
       </p>
-      <form className="mx-auto flex w-full max-w-lg justify-between overflow-hidden rounded border border-gray-300 bg-white max-sm:scale-75">
+      <form
+        onSubmit={onSubmitHandler}
+        className="mx-auto flex w-full max-w-lg justify-between overflow-hidden rounded border border-gray-300 bg-white max-sm:scale-75"
+      >
         <input
+          ref={inputRef}
           placeholder="Search for blogs"
           required
           className="flex-grow pl-4 outline-none"
