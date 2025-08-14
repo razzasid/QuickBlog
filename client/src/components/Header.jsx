@@ -1,15 +1,24 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 
 const Header = () => {
-  const { input, setInput } = useAppContext();
+  const { setInput } = useAppContext();
   const inputRef = useRef();
+  const [showClear, setShowClear] = useState(false);
 
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
     setInput(inputRef.current.value);
   };
+
+  const clearInput = () => {
+    setInput("");
+    inputRef.current.value = "";
+    setShowClear(false);
+    inputRef.current.focus();
+  };
+
   return (
     <div className="mt-10 flex flex-col items-center justify-center gap-7 text-center">
       <img
@@ -30,17 +39,31 @@ const Header = () => {
         write without filters. Whether it’s one word or a thousand, your story
         starts right here.
       </p>
+
       <form
         onSubmit={onSubmitHandler}
-        className="mx-auto flex w-full max-w-lg justify-between overflow-hidden rounded border border-gray-300 bg-white max-sm:scale-75"
+        className="relative mx-auto flex w-full max-w-lg justify-between overflow-hidden rounded border border-gray-300 bg-white max-sm:scale-75"
       >
         <input
           ref={inputRef}
           placeholder="Search for blogs"
           required
-          className="flex-grow pl-4 outline-none"
           type="text"
+          className="flex-grow pr-10 pl-4 outline-none"
+          onInput={(e) => setShowClear(e.target.value.length > 0)}
         />
+
+        {/* Custom X button */}
+        {showClear && (
+          <button
+            type="button"
+            onClick={clearInput}
+            className="absolute top-1/2 cursor-pointer right-[125px] flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-2xl text-gray-500 transition hover:bg-gray-200"
+          >
+            &times;
+          </button>
+        )}
+
         <button
           type="submit"
           className="bg-primary m-1.5 cursor-pointer rounded px-8 py-2 text-white transition-all hover:scale-105"

@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { comments_data } from "../../assets/assets";
 import CommentTableItem from "../../components/admin/CommentTableItem";
+import { useAppContext } from "../../context/AppContext";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
   const [filter, setFilter] = useState("Not Approved");
 
+  const { axios } = useAppContext();
+
   const fetchComments = async () => {
-    setComments(comments_data);
+    try {
+      const { data } = await axios.get(`/api/admin/comments`);
+      data.success ? setComments(data.comments) : toast.error(data.message);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -15,7 +23,7 @@ const Comments = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex-1 bg-blue-50/50 px-5 pt-5 sm:pt-12 sm:pl-16">
+    <div className="min-h-[calc(100vh-70px)] flex-1 bg-blue-50/50 px-5 pt-5 sm:pt-12 sm:pl-16">
       <div className="flex max-w-3xl items-center justify-between">
         <h1>Comments</h1>
         <div className="flex gap-4">
