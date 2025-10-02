@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 
@@ -6,6 +6,11 @@ const Login = () => {
   const { axios, setToken } = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setEmail("admin@example.com");
+    setPassword("razasidd123");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,8 +50,9 @@ const Login = () => {
             <div className="flex flex-col">
               <label>Email</label>
               <input
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+                // value={email}
+                defaultValue="admin@example.com"
                 type="email"
                 required
                 placeholder="your email id"
@@ -56,8 +62,9 @@ const Login = () => {
             <div className="flex flex-col">
               <label>Password</label>
               <input
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
+                // onChange={(e) => setPassword(e.target.value)}
+                // value={password}
+                defaultValue="razasidd123"
                 type="password"
                 required
                 placeholder="your password"
